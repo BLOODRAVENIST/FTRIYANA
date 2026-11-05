@@ -11,6 +11,7 @@
 [![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-4.0.0-darkred?style=for-the-badge)]()
 [![Status](https://img.shields.io/badge/Status-Stable-success?style=for-the-badge)]()
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-yellow?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/bloodravenist)
 
 **Built by [Ajeet Kathat](https://github.com/BLOODRAVENIST)**
 
