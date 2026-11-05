@@ -251,6 +251,18 @@ The author is not responsible for misuse. Unauthorized access is illegal under C
 
 ---
 
+## ☕ Support This Project
+
+If Ftriyana helped you in your labs, exams, or engagements, consider buying me a coffee!
+
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20Ftriyana-yellow?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/bloodravenist)
+
+Your support keeps this project alive and helps me add more tools and features.
+
+
+
+---
+
 <div align="center">
 
 **⭐ If Ftriyana helped you, give it a star! ⭐**
