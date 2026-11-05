@@ -13,7 +13,7 @@
 [![Status](https://img.shields.io/badge/Status-Stable-success?style=for-the-badge)]()
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-yellow?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/bloodravenist)
 
-**Built by [Ajeet Kathat](https://github.com/BLOODRAVENIST)**
+**Made by [BLOODRAVENIST](https://github.com/BLOODRAVENIST)**
 
 > ⚠️ **For Authorized Penetration Testing Only.** AI feature is **OFF in exam mode** (OffSec/CPTS/PNPT compliance).
 
@@ -29,11 +29,11 @@
 - [Usage](#-usage)
 - [Modes](#-modes)
 - [Output](#-output)
-- [AI Integration](#-ai-integration)
+- [AI Setup Guide](#-ai-setup-guide)
 - [Project Structure](#-project-structure)
 - [Roadmap](#-roadmap)
 - [Legal](#%EF%B8%8F-legal)
-- [Author](#-author)
+- [Support](#-support)
 
 ---
 
@@ -177,9 +177,30 @@ Errors → `errors/ERROR_FIX.md` with fix suggestions.
 
 ---
 
-## 🤖 AI Integration
+## 🤖 AI Setup Guide
 
-Edit `config/ai_config.json`:
+Ftriyana supports **DeepSeek** (primary) and **Gemini** (fallback) for AI-assisted analysis and the interactive AI shell.
+
+### Step 1: Get an API Key
+
+**DeepSeek (recommended):**
+1. Go to https://platform.deepseek.com/api_keys
+2. Sign up / log in
+3. Create a new API key
+4. Copy it (starts with `sk-`)
+
+**Gemini (optional fallback):**
+1. Go to https://aistudio.google.com/apikey
+2. Create a new API key
+3. Copy it (starts with `AQ.`)
+
+### Step 2: Edit `config/ai_config.json`
+
+Open the file:
+
+    nano config/ai_config.json
+
+Paste your key(s):
 
     {
       "gemini": {
@@ -188,7 +209,7 @@ Edit `config/ai_config.json`:
         "enabled": false
       },
       "deepseek": {
-        "api_key": "sk-YOUR-KEY-HERE",
+        "api_key": "sk-YOUR-DEEPSEEK-KEY-HERE",
         "model": "deepseek-chat",
         "base_url": "https://api.deepseek.com",
         "enabled": true
@@ -196,9 +217,20 @@ Edit `config/ai_config.json`:
       "primary": "deepseek"
     }
 
-**Priority:** DeepSeek (primary) → Gemini (fallback)
+Save: `Ctrl+O`, `Enter`, `Ctrl+X`
 
-> 🔒 **NEVER commit real API keys.** `config/ai_config.json` is in `.gitignore`.
+### Step 3: Test AI
+
+    python ftriyana.py -t 1.1.1.1 --ai-shell --i-have-permission
+
+Then type: `/ai what is port 445?`
+
+### 🔒 Security Warning
+
+- **NEVER commit your API keys** to GitHub
+- `config/ai_config.json` is in `.gitignore` — keep it that way
+- If you accidentally commit a key, **revoke it immediately** on the provider's dashboard
+- Use environment variables if preferred (future feature)
 
 ---
 
@@ -242,16 +274,7 @@ The author is not responsible for misuse. Unauthorized access is illegal under C
 
 ---
 
-## 👤 Author
-
-**Ajeet Kathat** ([@BLOODRAVENIST](https://github.com/BLOODRAVENIST))
-
-- 🐙 GitHub: [BLOODRAVENIST](https://github.com/BLOODRAVENIST)
-- 📧 Email: ajeetkathatt@gmail.com
-
----
-
-## ☕ Support This Project
+## ☕ Support
 
 If Ftriyana helped you in your labs, exams, or engagements, consider buying me a coffee!
 
@@ -259,14 +282,12 @@ If Ftriyana helped you in your labs, exams, or engagements, consider buying me a
 
 Your support keeps this project alive and helps me add more tools and features.
 
-
-
 ---
 
 <div align="center">
 
 **⭐ If Ftriyana helped you, give it a star! ⭐**
 
-Made with 🔴 by Ajeet Kathat
+Made with 🔴 by [BLOODRAVENIST](https://github.com/BLOODRAVENIST)
 
 </div>

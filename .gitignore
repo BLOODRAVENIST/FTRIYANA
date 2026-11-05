@@ -4,3 +4,5 @@ __pycache__/
 results/
 errors/
 config/ai_config.json
+.DS_Store
+*.log

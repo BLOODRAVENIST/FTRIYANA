@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Ftriyana v4.0.0 — Deep Internal Reconnaissance Framework
-by Ajeet Kathat · For Authorized Testing Only"""
+by BLOODRAVENIST · For Authorized Testing Only"""
 import os, sys, json, time, hashlib, argparse, subprocess, signal
 from datetime import datetime
 from pathlib import Path
@@ -22,13 +22,15 @@ sys.path.insert(0, str(BASE / "core"))
 
 console = Console()
 
+
 def banner():
     console.print(f"[bold red]{pyfiglet.figlet_format('FTRIYANA', font='ansi_shadow')}[/bold red]")
     console.print(Panel.fit(
         "[bold red]DEEP INTERNAL RECONNAISSANCE FRAMEWORK[/bold red]\n"
-        "[dim red]by Ajeet Kathat · For Authorized Testing Only[/dim red]\n"
+        "[dim red]by BLOODRAVENIST · For Authorized Testing Only[/dim red]\n"
         f"[dim red]v{VERSION}[/dim red]",
         border_style="red", box=box.DOUBLE))
+
 
 def auth():
     console.print("\n[bold red]⚠  Authorization Required[/bold red]")
@@ -43,6 +45,7 @@ def auth():
         console.print(f"[red]✗ Invalid. {i-1} left.[/red]")
     sys.exit(1)
 
+
 def check_target(target):
     try:
         r = subprocess.run(["ping", "-c", "1", "-W", "2", target],
@@ -50,6 +53,7 @@ def check_target(target):
         return r.returncode == 0
     except Exception:
         return False
+
 
 def run_tool(tool, target, outdir, timeout, is_root):
     if tool.get("root") and not is_root:
@@ -77,6 +81,7 @@ def run_tool(tool, target, outdir, timeout, is_root):
     except Exception as e:
         return False, str(e)
 
+
 def log_error(tool, reason):
     ERR.mkdir(exist_ok=True)
     f = ERR / "ERROR_FIX.md"
@@ -86,6 +91,7 @@ def log_error(tool, reason):
             fh.write("# Ftriyana — Error Log\n\n")
         fh.write(f"## {tool}\n- **Reason:** {reason}\n- **Time:** {datetime.now().isoformat()}\n")
         fh.write(f"- **Fix:** check `which {tool.split('_')[0]}`\n\n")
+
 
 def write_report(outdir, target, results, elapsed):
     total = len(results)
@@ -101,6 +107,7 @@ def write_report(outdir, target, results, elapsed):
             f.write(f"| {i} | {r['tool']} | {status} | {r['reason'] or '-'} |\n")
         f.write("\n## Raw outputs: `raw/`\n")
     return rep
+
 
 def main():
     p = argparse.ArgumentParser(description="Ftriyana v4")
@@ -194,6 +201,7 @@ def main():
         f"Tools: {ok_count}/{len(results)}  ·  Time: {elapsed:.1f}s\n"
         f"Report: [red]{report}[/red]\nOutput: {outdir}",
         border_style="red"))
+
 
 if __name__ == "__main__":
     try:

@@ -1,3 +1,4 @@
+"""Ftriyana Interactive AI Shell."""
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
@@ -9,10 +10,12 @@ from rich import box
 
 console = Console()
 
+
 def run_shell():
     console.print(Panel.fit(
         "[bold red]Ftriyana AI Shell[/bold red]\n"
-        "[dim]/ai <question>  |  /exit[/dim]",
+        "[dim]/ai <question>  |  /exit[/dim]\n"
+        "[dim]AI requires API keys in config/ai_config.json (see README)[/dim]",
         border_style="red"
     ))
     while True:

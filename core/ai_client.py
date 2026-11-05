@@ -1,13 +1,16 @@
+"""Ftriyana AI Client — DeepSeek primary, Gemini fallback."""
 import json
 from pathlib import Path
 import requests
 
 CONFIG = Path(__file__).parent.parent / "config" / "ai_config.json"
 
+
 def load_config():
     if CONFIG.exists():
         return json.load(open(CONFIG))
     return {"gemini": {"enabled": False}, "deepseek": {"enabled": False}, "primary": "deepseek"}
+
 
 def _call_gemini(prompt, cfg):
     key = cfg["gemini"].get("api_key", "")
@@ -21,6 +24,7 @@ def _call_gemini(prompt, cfg):
         return None, f"Gemini HTTP {r.status_code}"
     except Exception as e:
         return None, f"Gemini: {e}"
+
 
 def _call_deepseek(prompt, cfg):
     key = cfg["deepseek"].get("api_key", "")
@@ -37,6 +41,7 @@ def _call_deepseek(prompt, cfg):
         return None, f"DeepSeek HTTP {r.status_code}: {r.text[:200]}"
     except Exception as e:
         return None, f"DeepSeek: {e}"
+
 
 def ask(prompt):
     cfg = load_config()
@@ -57,4 +62,4 @@ def ask(prompt):
             if r2: return r2, "deepseek (fallback)"
             return f"[AI Error] Gemini: {e} | DeepSeek: {e2}", "none"
         return f"[AI Error] Gemini: {e}", "none"
-    return "[AI Disabled] No API keys enabled in config/ai_config.json", "none"
+    return "[AI Disabled] Add API keys in config/ai_config.json (see README)", "none"
