@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+*.pyc
+results/
+errors/
+config/ai_config.json
