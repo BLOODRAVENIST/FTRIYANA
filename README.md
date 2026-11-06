@@ -43,7 +43,6 @@
 
 ## Tools Integrated
 
-
 ### Recon
 `subfinder`, `theharvester`, `dnsenum`, `dnsrecon`, `dnstracer`, `dnstwist`, `dnsx`, `dig_any`, `dig_axfr`
 
@@ -96,7 +95,6 @@ flowchart TD
 
 ## Installation
 
-
 ### Prerequisites
 
 - Kali Linux
@@ -131,7 +129,6 @@ python3 ftriyana.py 127.0.0.1
 
 ## Usage
 
-
 ```bash
 # Basic scan
 python3 ftriyana.py target.com
@@ -144,18 +141,6 @@ cat results/target_TIMESTAMP/reports.json
 ```
 
 **Output:**
-
-```text
-results/target_TIMESTAMP/
-├── raw/
-│   ├── nmap_fast.txt
-│   ├── nuclei_safe.txt
-│   ├── wpscan.txt
-│   ├── smbmap.txt
-│   └── ... (70+ files)
-reports.json
-Result/target/cms.json
-```
 
 ```text
 results/target_TIMESTAMP/
@@ -192,30 +177,9 @@ FTRIYANA/
 └── README.md
 ```
 
-
-```text
-FTRIYANA/
-├── core/
-│   ├── ai_client.py
-│   └── ai_shell.py
-├── config/
-│   ├── ai_config.json
-│   └── tools.json
-├── errors/
-│   └── ERROR_FIX.md
-├── Result/TARGET/cms.json
-├── results/TARGET_TIMESTAMP/raw/
-├── ftriyana.py
-├── reports.json
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
-
 ---
 
 ## Troubleshooting
-
 
 | Issue | Fix |
 |---|---|
@@ -227,7 +191,6 @@ FTRIYANA/
 ---
 
 ## Legal
-
 
 **FTRIYANA is for authorized bug bounty and penetration testing only.**
 
@@ -241,7 +204,6 @@ Unauthorized access is illegal under CFAA (US), Computer Misuse Act (UK), IT Act
 ---
 
 ## Support
-
 
 If FTRIYANA helped you, consider buying me a coffee!
 
