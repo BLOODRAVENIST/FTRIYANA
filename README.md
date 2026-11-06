@@ -1,293 +1,182 @@
 <div align="center">
 
-# 🔴 FTRIYANA
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=38&duration=2500&pause=800&color=9F4FFF&center=true&vCenter=true&multiline=true&width=900&height=120&lines=%F0%9F%A4%96+FTRIYANA;AI-Powered+Pentesting;70%2B+Tools+%2B+AI+Shell;Recon.+Analyze.+Exploit." alt="Typing SVG" />
 
-### Deep Internal Reconnaissance Framework
+# FTRIYANA
 
-**155-tool sequential enumeration for authorized penetration testing**
+### AI-Powered Penetration Testing Framework
 
-[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Kali](https://img.shields.io/badge/Kali-Linux-557C94?style=for-the-badge&logo=kali-linux&logoColor=white)](https://kali.org)
-[![License](https://img.shields.io/badge/License-MIT-red?style=for-the-badge)](LICENSE)
-[![Version](https://img.shields.io/badge/Version-4.0.0-darkred?style=for-the-badge)]()
-[![Status](https://img.shields.io/badge/Status-Stable-success?style=for-the-badge)]()
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-yellow?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/bloodravenist)
+**70+ pentesting tools orchestrated by an AI shell that thinks, plans, and executes**
 
 **Made by [BLOODRAVENIST](https://github.com/BLOODRAVENIST)**
 
-> ⚠️ **For Authorized Penetration Testing Only.** AI feature is **OFF in exam mode** (OffSec/CPTS/PNPT compliance).
-
-</div>
+> **For Authorized Bug Bounty & Penetration Testing Only**
 
 ---
 
-## 📋 Table of Contents
+## What Is FTRIYANA?
 
-- [Features](#-features)
-- [Tool Coverage](#-tool-coverage)
-- [Installation](#-installation)
-- [Usage](#-usage)
-- [Modes](#-modes)
-- [Output](#-output)
-- [AI Setup Guide](#-ai-setup-guide)
-- [Project Structure](#-project-structure)
-- [Roadmap](#-roadmap)
-- [Legal](#%EF%B8%8F-legal)
-- [Support](#-support)
+**FTRIYANA** is an **AI-driven pentesting framework** that combines 70+ security tools (nmap, nuclei, wpscan, smbmap, feroxbuster, etc.) with an **AI client** that plans attacks, analyzes results, and suggests next steps. It's recon on autopilot.
+
+**Why FTRIYANA?**
+
+- **AI Shell** - `ai_shell.py` interprets results and suggests next moves
+- **70+ Tools** - nmap, nuclei, wpscan, smbmap, feroxbuster, gobuster, ffuf, nikto, enum4linux, rustscan
+- **Smart Planning** - AI reads output and chains tools automatically
+- **Structured Results** - `results/TARGET_TIMESTAMP/raw/` + `reports.json`
+- **Modular Core** - `core/ai_client.py`, `core/ai_shell.py`
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
-| **155 Tools** | Curated network recon tools from Kali Linux, sequential execution |
-| **Multi-Phase** | Discovery → Service → SMB → LDAP → Web → DNS → SNMP → Mail → DB → RDP → SSH → SSL → Misc |
-| **Root-Aware** | Root-only tools skipped cleanly if not root |
-| **Non-Interactive** | Prevents sudo password hangs |
-| **Ctrl+C Safe** | Finishes current tool, writes report, exits |
-| **Markdown Report** | Auto-generated `FTRIYANA_REPORT.md` per target |
-| **Error Log** | `errors/ERROR_FIX.md` with fix suggestions |
-| **AI Assist (Optional)** | DeepSeek primary, Gemini fallback — OFF in exam mode |
-| **AI Shell** | Interactive `/ai <question>` during scan |
-| **Resume-Friendly** | Each tool's raw output saved individually |
+| **AI Shell** | LLM-powered analysis of tool output |
+| **70+ Tools** | nmap, nuclei, wpscan, smbmap, rpcclient, enum4linux-ng, rustscan, ffuf, gobuster, feroxbuster, nikto, subfinder, theharvester, dirb, dirsearch, dnsenum, dnsrecon, dnstwist, whatweb, cmseek |
+| **AI Config** | `config/ai_config.json` — plug in your LLM API key |
+| **JSON Reports** | `reports.json` + `Result/TARGET/cms.json` |
+| **Structured Raw** | Every tool's output saved per-scan |
+| **CMS Detection** | cmseek + whatweb integrated |
 
 ---
 
-## 🛠 Tool Coverage (155 tools)
+## Tools Integrated
 
-<details>
-<summary><b>Click to expand full tool list</b></summary>
+### Recon
+`subfinder`, `theharvester`, `dnsenum`, `dnsrecon`, `dnstracer`, `dnstwist`, `dnsx`, `dig_any`, `dig_axfr`
 
-### Host Discovery
-`nmap -sn` `nmap -T4 -F` `nmap -sS -p-` `nmap -sU` `fping` `nbtscan` `arp-scan` `netdiscover` `rustscan` `hping3` `nmap -sA` `nmap -sF` `nmap -sX` `nmap -sN`
+### Scanning
+`nmap_fast`, `nmap_default_scripts`, `nmap_service_version`, `rustscan`, `fping_sweep`, `nmap_ping_sweep`
 
-### Service Detection
-`nmap -sV` `nmap -sC` `nmap -O` `nmap -A` `whatweb` `nikto` `sslscan` `sslyze`
+### Web
+`nikto`, `whatweb`, `cmseek`, `wpscan`, `nuclei_safe`, `ffuf_dir`, `gobuster_dir`, `dirb`, `dirsearch`, `feroxbuster`, `curl_headers`, `curl_robots`, `curl_sitemap`
 
-### SMB / NetBIOS
-`smbclient` `smbmap` `enum4linux-ng` `rpcclient` `smb-os-discovery` `smb-enum-shares` `smb-enum-users` `smb-security-mode` `smb-vuln*` `smb2-security-mode` `smb2-capabilities` `smb-enum-sessions` `smb-enum-domains` `smb-enum-groups` `smb-enum-processes` `smb-enum-services` `smb-ls` `smb-system-info`
+### SMB / Windows
+`enum4linux_ng`, `smbclient_list`, `smbmap`, `rpcclient_enumdomusers`, `nbtscan`, `nmap_smb_*` (12+ scripts)
 
-### LDAP / AD
-`ldapsearch` `ldap-rootdse` `ldap-search` `msrpc-enum`
+### LDAP / HTTP
+`ldapsearch_anon`, `nmap_ldap_*`, `nmap_http_*` (10+ scripts)
 
-### Web Enumeration
-`nikto` `gobuster` `ffuf` `feroxbuster` `dirb` `dirsearch` `wpscan` `cmseek` `nuclei` `http-enum` `http-headers` `http-methods` `http-title` `http-robots.txt` `http-webdav-scan` `http-git` `http-svn-enum` `http-vuln-cve*` `curl` `waybackurls` `gowitness`
-
-### DNS
-`dig ANY` `dig axfr` `dnsrecon` `dnsenum` `fierce` `dnsx` `subfinder` `dnstwist` `dnstracer` `theHarvester` `whois` `whois-ip`
-
-### SNMP
-`snmpwalk` `snmp-check` `onesixtyone` `snmp-brute` `snmp-info` `snmp-sysdescr`
-
-### Mail / FTP / NFS
-`smtp-user-enum` `smtp-commands` `smtp-enum-users` `smtp-open-relay` `ftp-anon` `ftp-syst` `showmount` `rpcinfo` `nfs-showmount` `nfs-ls`
-
-### Databases
-`mysql-info` `mysql-empty-password` `mysql-databases` `ms-sql-info` `ms-sql-ntlm-info` `mongodb-info` `mongodb-databases` `redis-info` `oracle-tns-version`
-
-### RDP / VNC / SSH
-`rdp-enum-encryption` `rdp-ntlm-info` `rdp-vuln-ms12-020` `vnc-info` `ssh-auth-methods` `ssh-hostkey` `ssh2-enum-algos`
-
-### Kerberos / SSL
-`krb5-enum-users` `ssl-enum-ciphers` `ssl-heartbleed` `ssl-poodle` `ssl-ccs-injection` `ssl-dh-params`
-
-### Misc / Specialized
-`irc-info` `iscsi-info` `ntp-info` `upnp-info` `sip-methods` `xmpp-info` `docker-version` `kubernetes-version` `mikrotik-routeros-version` `jdwp-info` `knx-gateway-info` `p2p-conficker` `openflow-info` `nat-pmp-info` `ipv6-node-info` `ike-version`
-
-### OSINT
-`dmitry` `urlcrazy` `reconspider` `spiderfoot`
-
-</details>
+### Screenshots
+`gowitness`
 
 ---
 
-## 🚀 Installation
+## Architecture
+ftriyana.py (main)
+|
++-- core/
+| +-- ai_client.py # LLM API client
+| +-- ai_shell.py # interactive AI shell
+|
++-- config/
+| +-- ai_config.json # API keys, model
+| +-- tools.json # tool registry
+|
++-- results/TARGET_TIMESTAMP/
+| +-- raw/ # per-tool output
++-- Result/TARGET/
++-- cms.json # CMS detection
+
+text
+
+---
+
+## Installation
 
 ### Prerequisites
-- Kali Linux (recommended) or Debian-based distro
-- Python 3.8+
-- SecLists installed
 
-    sudo apt update
-    sudo apt install -y seclists nmap nikto gobuster ffuf feroxbuster dnsrecon enum4linux-ng smbclient smbmap ldap-utils snmp
+- Kali Linux
+- Python 3.10+
+- 70+ tools (nmap, nuclei, wpscan, etc.)
+- LLM API key (OpenAI / Anthropic / local)
 
-### Setup
+### Clone & Setup
 
-    git clone https://github.com/BLOODRAVENIST/FTRIYANA.git
-    cd FTRIYANA
+```bash
+git clone https://github.com/BLOODRAVENIST/FTRIYANA.git
+cd FTRIYANA
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+Configure AI
+bash
+nano config/ai_config.json
+# Add your API key
+Run
+bash
+python3 ftriyana.py 127.0.0.1
+Usage
+bash
+# Basic scan
+python3 ftriyana.py target.com
 
-    python3 -m venv venv
-    source venv/bin/activate
-    pip install -r requirements.txt
+# Interactive AI shell
+python3 ftriyana.py target.com --ai
 
----
+# Check results
+cat results/target_TIMESTAMP/reports.json
+Output:
 
-## 💻 Usage
+text
+results/target_TIMESTAMP/
+├── raw/
+│   ├── nmap_fast.txt
+│   ├── nuclei_safe.txt
+│   ├── wpscan.txt
+│   ├── smbmap.txt
+│   └── ... (70+ files)
+reports.json
+Result/target/cms.json
+File Structure
+text
+FTRIYANA/
+├── core/
+│   ├── ai_client.py
+│   └── ai_shell.py
+├── config/
+│   ├── ai_config.json
+│   └── tools.json
+├── errors/
+│   └── ERROR_FIX.md
+├── Result/TARGET/cms.json
+├── results/TARGET_TIMESTAMP/raw/
+├── ftriyana.py
+├── reports.json
+├── requirements.txt
+├── LICENSE
+└── README.md
+Troubleshooting
+Issue	Fix
+ModuleNotFoundError	source venv/bin/activate && pip install -r requirements.txt
+AI not responding	Check config/ai_config.json API key
+Tool missing	which nmap — install missing tools
+Empty reports	Check results/*/raw/ for per-tool errors
+Legal
+FTRIYANA is for authorized bug bounty and penetration testing only.
 
-### Exam Mode (AI off)
+Only use on targets within valid bug bounty scope
 
-    python ftriyana.py -t 10.10.10.10 --mode exam --gap 15 --i-have-permission
+Use for authorized pentesting with written permission
 
-### AI Mode (Authorized Internal Only)
+Use in lab environments (HTB, THM, VulnHub)
 
-    python ftriyana.py -t 10.10.10.10 --mode ai --gap 15 --i-have-permission
+Do NOT use on systems you do not own
 
-### Interactive AI Shell
+Unauthorized access is illegal under CFAA (US), Computer Misuse Act (UK), IT Act (India), and similar laws worldwide.
 
-    python ftriyana.py -t 1.1.1.1 --ai-shell --i-have-permission
+Support
+If FTRIYANA helped you, consider buying me a coffee!
 
-**Authorization Code:** `FTRIYANA69`
-
-### Command-Line Options
-
-| Flag | Description | Default |
-|---|---|---|
-| `-t, --target` | Target IP or hostname | **required** |
-| `--mode` | `exam` / `ai` / `fast` / `deep` | `exam` |
-| `--gap` | Seconds between tools | `15` |
-| `--i-have-permission` | Confirm written authorization | **required** |
-| `--ai-shell` | Launch AI shell only | `false` |
-
----
-
-## 🎯 Modes
-
-| Mode | AI | Gap | Tools | Use Case |
-|---|---|---|---|---|
-| **`exam`** | ❌ Off | 15s | 155 | OffSec / CPTS / PNPT exams |
-| **`ai`** | ✅ On | 15s | 155 | Authorized internal pentest |
-| **`fast`** | ❌ Off | 5s | 25 | Quick recon |
-| **`deep`** | ❌ Off | 30s | 155 | Full deep enumeration |
-
----
-
-## 📁 Output
-
-    results/<target>_<timestamp>/
-    ├── FTRIYANA_REPORT.md      # Markdown report
-    └── raw/
-        ├── nmap_ping_sweep.txt
-        ├── nmap_full_tcp.txt
-        ├── enum4linux_ng.txt
-        ├── nikto.txt
-        └── ... (155 files)
-
-Errors → `errors/ERROR_FIX.md` with fix suggestions.
-
----
-
-## 🤖 AI Setup Guide
-
-Ftriyana supports **DeepSeek** (primary) and **Gemini** (fallback) for AI-assisted analysis and the interactive AI shell.
-
-### Step 1: Get an API Key
-
-**DeepSeek (recommended):**
-1. Go to https://platform.deepseek.com/api_keys
-2. Sign up / log in
-3. Create a new API key
-4. Copy it (starts with `sk-`)
-
-**Gemini (optional fallback):**
-1. Go to https://aistudio.google.com/apikey
-2. Create a new API key
-3. Copy it (starts with `AQ.`)
-
-### Step 2: Edit `config/ai_config.json`
-
-Open the file:
-
-    nano config/ai_config.json
-
-Paste your key(s):
-
-    {
-      "gemini": {
-        "api_key": "",
-        "model": "gemini-1.5-flash",
-        "enabled": false
-      },
-      "deepseek": {
-        "api_key": "sk-YOUR-DEEPSEEK-KEY-HERE",
-        "model": "deepseek-chat",
-        "base_url": "https://api.deepseek.com",
-        "enabled": true
-      },
-      "primary": "deepseek"
-    }
-
-Save: `Ctrl+O`, `Enter`, `Ctrl+X`
-
-### Step 3: Test AI
-
-    python ftriyana.py -t 1.1.1.1 --ai-shell --i-have-permission
-
-Then type: `/ai what is port 445?`
-
-### 🔒 Security Warning
-
-- **NEVER commit your API keys** to GitHub
-- `config/ai_config.json` is in `.gitignore` — keep it that way
-- If you accidentally commit a key, **revoke it immediately** on the provider's dashboard
-- Use environment variables if preferred (future feature)
-
----
-
-## 📂 Project Structure
-
-    FTRIYANA/
-    ├── ftriyana.py              # Main entry point
-    ├── requirements.txt
-    ├── config/
-    │   ├── tools.json           # 155 tool definitions
-    │   └── ai_config.json       # AI keys (gitignored)
-    ├── core/
-    │   ├── ai_client.py         # DeepSeek + Gemini client
-    │   └── ai_shell.py          # Interactive AI shell
-    ├── results/                 # Scan output (gitignored)
-    ├── errors/                  # Error log (gitignored)
-    └── README.md
-
----
-
-## 🗺 Roadmap
-
-- [x] v4.0.0 — 155 tools, AI integration, red banner
-- [ ] v4.1.0 — HTML dashboard report
-- [ ] v4.2.0 — Resume support
-- [ ] v4.3.0 — Advanced parsers
-- [ ] v5.0.0 — 200+ tools, plugin architecture
-
----
-
-## ⚖️ Legal
-
-**Ftriyana is for authorized penetration testing only.**
-
-- ✅ Only use on systems you have **written permission** to test
-- ✅ Use in lab environments (HTB, THM, VulnHub, OSCP/CPTS labs)
-- ❌ Do NOT use on systems you don't own or have permission for
-- ❌ AI feature must be **OFF** during OffSec/CPTS/PNPT exams
-
-The author is not responsible for misuse. Unauthorized access is illegal under CFAA (US), Computer Misuse Act (UK), IT Act (India), and similar laws worldwide.
-
----
-
-## ☕ Support
-
-If Ftriyana helped you in your labs, exams, or engagements, consider buying me a coffee!
-
-[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20Ftriyana-yellow?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/bloodravenist)
-
-Your support keeps this project alive and helps me add more tools and features.
-
----
+https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20FTRIYANA-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black
 
 <div align="center">
+Made by BLOODRAVENIST
+If FTRIYANA helped you, give it a star!
 
-**⭐ If Ftriyana helped you, give it a star! ⭐**
+BLOODRAVENIST | FTRIYANA
 
-Made with 🔴 by [BLOODRAVENIST](https://github.com/BLOODRAVENIST)
+<img src="https://capsule-render.vercel.app/api?type=waving&color=9F4FFF&height=100&section=footer&text=AI%20Recon&fontSize=32&fontColor=ffffff&animation=twinkling" width="100%"/>
 
 </div>
