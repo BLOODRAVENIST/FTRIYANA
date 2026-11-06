@@ -65,21 +65,30 @@
 
 ## Architecture
 
-```text
-ftriyana.py (main)
-    |
-    +-- core/
-    |     +-- ai_client.py    # LLM API client
-    |     +-- ai_shell.py     # interactive AI shell
-    |
-    +-- config/
-    |     +-- ai_config.json  # API keys, model
-    |     +-- tools.json      # tool registry
-    |
-    +-- results/TARGET_TIMESTAMP/
-    |     +-- raw/            # per-tool output
-    +-- Result/TARGET/
-          +-- cms.json        # CMS detection
+```mermaid
+flowchart TD
+    A[🤖 ftriyana.py<br/>Main Entry] --> B[🧠 core/]
+    A --> C[⚙️ config/]
+    A --> D[📁 results/]
+    
+    B --> B1[ai_client.py<br/>LLM API]
+    B --> B2[ai_shell.py<br/>Interactive Shell]
+    
+    C --> C1[ai_config.json<br/>API Keys]
+    C --> C2[tools.json<br/>Tool Registry]
+    
+    D --> D1[TARGET_TIMESTAMP/]
+    D1 --> D2[raw/<br/>Per-tool output]
+    D1 --> D3[subdomains.txt + urls.txt]
+    
+    A --> E[📊 Result/TARGET/]
+    E --> E1[cms.json<br/>CMS Detection]
+    
+    style A fill:#9F4FFF,stroke:#A855F7,color:#fff
+    style B fill:#7C3AED,stroke:#A855F7,color:#fff
+    style C fill:#7C3AED,stroke:#A855F7,color:#fff
+    style D fill:#7C3AED,stroke:#A855F7,color:#fff
+    style E fill:#7C3AED,stroke:#A855F7,color:#fff
 ```
 
 ---
