@@ -43,6 +43,7 @@
 
 ## Tools Integrated
 
+
 ### Recon
 `subfinder`, `theharvester`, `dnsenum`, `dnsrecon`, `dnstracer`, `dnstwist`, `dnsx`, `dig_any`, `dig_axfr`
 
@@ -95,6 +96,7 @@ flowchart TD
 
 ## Installation
 
+
 ### Prerequisites
 
 - Kali Linux
@@ -129,6 +131,7 @@ python3 ftriyana.py 127.0.0.1
 
 ## Usage
 
+
 ```bash
 # Basic scan
 python3 ftriyana.py target.com
@@ -158,6 +161,7 @@ Result/target/cms.json
 
 ## File Structure
 
+
 ```text
 FTRIYANA/
 ├── core/
@@ -181,6 +185,7 @@ FTRIYANA/
 
 ## Troubleshooting
 
+
 | Issue | Fix |
 |---|---|
 | `ModuleNotFoundError` | `source venv/bin/activate && pip install -r requirements.txt` |
@@ -191,6 +196,7 @@ FTRIYANA/
 ---
 
 ## Legal
+
 
 **FTRIYANA is for authorized bug bounty and penetration testing only.**
 
@@ -204,6 +210,7 @@ Unauthorized access is illegal under CFAA (US), Computer Misuse Act (UK), IT Act
 ---
 
 ## Support
+
 
 If FTRIYANA helped you, consider buying me a coffee!
 
