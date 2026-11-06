@@ -157,9 +157,40 @@ reports.json
 Result/target/cms.json
 ```
 
+```text
+results/target_TIMESTAMP/
+├── raw/
+│   ├── nmap_fast.txt
+│   ├── nuclei_safe.txt
+│   ├── wpscan.txt
+│   ├── smbmap.txt
+│   └── ... (70+ files)
+reports.json
+Result/target/cms.json
+```
+
 ---
 
 ## File Structure
+
+```text
+FTRIYANA/
+├── core/
+│   ├── ai_client.py
+│   └── ai_shell.py
+├── config/
+│   ├── ai_config.json
+│   └── tools.json
+├── errors/
+│   └── ERROR_FIX.md
+├── Result/TARGET/cms.json
+├── results/TARGET_TIMESTAMP/raw/
+├── ftriyana.py
+├── reports.json
+├── requirements.txt
+├── LICENSE
+└── README.md
+```
 
 
 ```text
