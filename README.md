@@ -16,15 +16,15 @@
 
 ## What Is FTRIYANA?
 
-**FTRIYANA** is an **AI-driven pentesting framework** that combines 70+ security tools (nmap, nuclei, wpscan, smbmap, feroxbuster, etc.) with an **AI client** that plans attacks, analyzes results, and suggests next steps. It's recon on autopilot.
+**FTRIYANA** is an **AI-driven pentesting framework** that combines 70+ security tools with an **AI client** that plans attacks, analyzes results, and suggests next steps. It's recon on autopilot.
 
 **Why FTRIYANA?**
 
-- **AI Shell** - ai_shell.py interprets results and suggests next moves
-- **70+ Tools** - nmap, nuclei, wpscan, smbmap, feroxbuster, gobuster, ffuf, nikto, enum4linux, rustscan
-- **Smart Planning** - AI reads output and chains tools automatically
-- **Structured Results** - results/TARGET_TIMESTAMP/raw/ + reports.json
-- **Modular Core** - core/ai_client.py + core/ai_shell.py
+- **AI Shell** — interprets results and suggests next moves
+- **70+ Tools** — nmap, nuclei, wpscan, smbmap, feroxbuster, gobuster, ffuf, nikto, enum4linux, rustscan
+- **Smart Planning** — AI reads output and chains tools automatically
+- **Structured Results** — results/TARGET_TIMESTAMP/raw/ + reports.json
+- **Modular Core** — core/ai_client.py + core/ai_shell.py
 
 ---
 
@@ -34,7 +34,7 @@
 |---|---|
 | **AI Shell** | LLM-powered analysis of tool output |
 | **70+ Tools** | nmap, nuclei, wpscan, smbmap, rpcclient, enum4linux-ng, rustscan, ffuf, gobuster, feroxbuster, nikto, subfinder, theharvester, dirb, dirsearch, dnsenum, dnsrecon, dnstwist, whatweb, cmseek |
-| **AI Config** | config/ai_config.json - plug in your LLM API key |
+| **AI Config** | config/ai_config.json — plug in your LLM API key |
 | **JSON Reports** | reports.json + Result/TARGET/cms.json |
 | **Structured Raw** | Every tool's output saved per-scan |
 | **CMS Detection** | cmseek + whatweb integrated |
@@ -71,22 +71,15 @@ gowitness
 
 ## Architecture
 
-```
-ftriyana.py (main)
-    |
-    +-- core/
-    |     +-- ai_client.py    # LLM API client
-    |     +-- ai_shell.py     # interactive AI shell
-    |
-    +-- config/
-    |     +-- ai_config.json  # API keys, model
-    |     +-- tools.json      # tool registry
-    |
-    +-- results/TARGET_TIMESTAMP/
-    |     +-- raw/            # per-tool output
-    +-- Result/TARGET/
-          +-- cms.json        # CMS detection
-```
+| Path | Purpose |
+|---|---|
+| ftriyana.py | Main entry point |
+| core/ai_client.py | LLM API client |
+| core/ai_shell.py | Interactive AI shell |
+| config/ai_config.json | API keys, model |
+| config/tools.json | Tool registry |
+| results/TARGET_TIMESTAMP/raw/ | Per-tool output |
+| Result/TARGET/cms.json | CMS detection |
 
 ---
 
@@ -101,78 +94,70 @@ ftriyana.py (main)
 
 ### Clone & Setup
 
-```bash
-git clone https://github.com/BLOODRAVENIST/FTRIYANA.git
-cd FTRIYANA
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
+**git clone https://github.com/BLOODRAVENIST/FTRIYANA.git**
+
+**cd FTRIYANA**
+
+**python3 -m venv venv**
+
+**source venv/bin/activate**
+
+**pip install -r requirements.txt**
 
 ### Configure AI
 
-```bash
-nano config/ai_config.json
-# Add your API key
-```
+**nano config/ai_config.json**
+
+Add your API key inside.
 
 ### Run
 
-```bash
-python3 ftriyana.py 127.0.0.1
-```
+**python3 ftriyana.py 127.0.0.1**
 
 ---
 
 ## Usage
 
-```bash
-# Basic scan
-python3 ftriyana.py target.com
+Basic scan:
 
-# Interactive AI shell
-python3 ftriyana.py target.com --ai
+**python3 ftriyana.py target.com**
 
-# Check results
-cat results/target_TIMESTAMP/reports.json
-```
+Interactive AI shell:
+
+**python3 ftriyana.py target.com --ai**
+
+Check results:
+
+**cat results/target_TIMESTAMP/reports.json**
 
 ### Output Structure
 
-```
-results/target_TIMESTAMP/
-├── raw/
-│   ├── nmap_fast.txt
-│   ├── nuclei_safe.txt
-│   ├── wpscan.txt
-│   ├── smbmap.txt
-│   └── ... (70+ files)
-reports.json
-Result/target/cms.json
-```
+| Path | Content |
+|---|---|
+| results/TARGET_TIMESTAMP/raw/ | Per-tool output files (70+) |
+| results/TARGET_TIMESTAMP/subdomains.txt | Deduplicated subdomains |
+| results/TARGET_TIMESTAMP/urls.txt | All URLs found |
+| reports.json | JSON report |
+| Result/TARGET/cms.json | CMS detection results |
 
 ---
 
 ## File Structure
 
-```
-FTRIYANA/
-├── core/
-│   ├── ai_client.py
-│   └── ai_shell.py
-├── config/
-│   ├── ai_config.json
-│   └── tools.json
-├── errors/
-│   └── ERROR_FIX.md
-├── Result/TARGET/cms.json
-├── results/TARGET_TIMESTAMP/raw/
-├── ftriyana.py
-├── reports.json
-├── requirements.txt
-├── LICENSE
-└── README.md
-```
+| Path | Purpose |
+|---|---|
+| core/ai_client.py | LLM API client |
+| core/ai_shell.py | Interactive AI shell |
+| config/ai_config.json | API keys, model |
+| config/tools.json | Tool registry |
+| errors/ERROR_FIX.md | Error solutions |
+| Result/TARGET/cms.json | CMS detection |
+| results/TARGET_TIMESTAMP/raw/ | Per-tool output |
+| ftriyana.py | Main entry |
+| reports.json | JSON reports |
+| requirements.txt | Python deps |
+| LICENSE | MIT |
+| README.md | This file |
 
 ---
 
@@ -182,7 +167,7 @@ FTRIYANA/
 |---|---|
 | ModuleNotFoundError | source venv/bin/activate && pip install -r requirements.txt |
 | AI not responding | Check config/ai_config.json API key |
-| Tool missing | which nmap - install missing tools |
+| Tool missing | which nmap — install missing tools |
 | Empty reports | Check results/*/raw/ for per-tool errors |
 
 ---
