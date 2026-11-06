@@ -64,22 +64,23 @@
 ---
 
 ## Architecture
-ftriyana.py (main)
-|
-+-- core/
-| +-- ai_client.py # LLM API client
-| +-- ai_shell.py # interactive AI shell
-|
-+-- config/
-| +-- ai_config.json # API keys, model
-| +-- tools.json # tool registry
-|
-+-- results/TARGET_TIMESTAMP/
-| +-- raw/ # per-tool output
-+-- Result/TARGET/
-+-- cms.json # CMS detection
 
-text
+```text
+ftriyana.py (main)
+    |
+    +-- core/
+    |     +-- ai_client.py    # LLM API client
+    |     +-- ai_shell.py     # interactive AI shell
+    |
+    +-- config/
+    |     +-- ai_config.json  # API keys, model
+    |     +-- tools.json      # tool registry
+    |
+    +-- results/TARGET_TIMESTAMP/
+    |     +-- raw/            # per-tool output
+    +-- Result/TARGET/
+          +-- cms.json        # CMS detection
+```
 
 ---
 
@@ -100,15 +101,26 @@ cd FTRIYANA
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-Configure AI
-bash
+```
+
+### Configure AI
+
+```bash
 nano config/ai_config.json
 # Add your API key
-Run
-bash
+```
+
+### Run
+
+```bash
 python3 ftriyana.py 127.0.0.1
-Usage
-bash
+```
+
+---
+
+## Usage
+
+```bash
 # Basic scan
 python3 ftriyana.py target.com
 
@@ -117,9 +129,11 @@ python3 ftriyana.py target.com --ai
 
 # Check results
 cat results/target_TIMESTAMP/reports.json
-Output:
+```
 
-text
+**Output:**
+
+```text
 results/target_TIMESTAMP/
 ├── raw/
 │   ├── nmap_fast.txt
@@ -129,8 +143,13 @@ results/target_TIMESTAMP/
 │   └── ... (70+ files)
 reports.json
 Result/target/cms.json
-File Structure
-text
+```
+
+---
+
+## File Structure
+
+```text
 FTRIYANA/
 ├── core/
 │   ├── ai_client.py
@@ -147,35 +166,49 @@ FTRIYANA/
 ├── requirements.txt
 ├── LICENSE
 └── README.md
-Troubleshooting
-Issue	Fix
-ModuleNotFoundError	source venv/bin/activate && pip install -r requirements.txt
-AI not responding	Check config/ai_config.json API key
-Tool missing	which nmap — install missing tools
-Empty reports	Check results/*/raw/ for per-tool errors
-Legal
-FTRIYANA is for authorized bug bounty and penetration testing only.
+```
 
-Only use on targets within valid bug bounty scope
+---
 
-Use for authorized pentesting with written permission
+## Troubleshooting
 
-Use in lab environments (HTB, THM, VulnHub)
+| Issue | Fix |
+|---|---|
+| `ModuleNotFoundError` | `source venv/bin/activate && pip install -r requirements.txt` |
+| AI not responding | Check `config/ai_config.json` API key |
+| Tool missing | `which nmap` — install missing tools |
+| Empty reports | Check `results/*/raw/` for per-tool errors |
 
-Do NOT use on systems you do not own
+---
+
+## Legal
+
+**FTRIYANA is for authorized bug bounty and penetration testing only.**
+
+- Only use on targets within valid bug bounty scope
+- Use for authorized pentesting with written permission
+- Use in lab environments (HTB, THM, VulnHub)
+- Do NOT use on systems you do not own
 
 Unauthorized access is illegal under CFAA (US), Computer Misuse Act (UK), IT Act (India), and similar laws worldwide.
 
-Support
+---
+
+## Support
+
 If FTRIYANA helped you, consider buying me a coffee!
 
-https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20FTRIYANA-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support%20FTRIYANA-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/bloodravenist)
+
+---
 
 <div align="center">
-Made by BLOODRAVENIST
-If FTRIYANA helped you, give it a star!
 
-BLOODRAVENIST | FTRIYANA
+### Made by BLOODRAVENIST
+
+**If FTRIYANA helped you, give it a star!**
+
+**[BLOODRAVENIST](https://github.com/BLOODRAVENIST)** | **[FTRIYANA](https://github.com/BLOODRAVENIST/FTRIYANA)**
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=9F4FFF&height=100&section=footer&text=AI%20Recon&fontSize=32&fontColor=ffffff&animation=twinkling" width="100%"/>
 
